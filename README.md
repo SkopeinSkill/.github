@@ -2,15 +2,9 @@
 
 **Gérez votre caméra à distance via une web app sécurisée et intuitive !**
 
-<p align="center">
-  <img src="https://via.placeholder.com/600x200?text=Caméra+Connectée" alt="Preview" />
-</p>
-
----
-
 ## 🚀 À propos
 
-Solution pour contrôler une caméra via une web app PHP et une API Flask, avec sécurité via Cloudflare Tunnel.
+**Caméra Connectée** est une solution pour contrôler une caméra via une web app PHP et une API Flask, avec une infrastructure moderne et sécurisée grâce à Cloudflare Tunnel.
 
 ---
 
@@ -23,13 +17,18 @@ Solution pour contrôler une caméra via une web app PHP et une API Flask, avec 
 
 ---
 
-## 🏗️ Architecture
+## 🏗️ Infrastructure 🔥
 
-- **Frontend** : PHP (MVC, Twig), hébergé sur AlwaysData.
-- **Backend** : API Flask (Python), local (ex. Raspberry Pi).
-- **Cloudflare Tunnel** : Connexion sécurisée sans ports ouverts.
-- **Base de données** : MySQL sur AlwaysData.
-- **Caméra** : Communique via HTTP/MQTT.
+L'infrastructure est le cœur de ce projet, conçue pour allier **sécurité**, **flexibilité** et **performance** :
+
+- **Architecture distribuée** : Séparation nette entre le **frontend** (PHP sur AlwaysData) et le **backend** (API Flask hébergée localement, ex. Raspberry Pi), garantissant modularité et résilience.
+- **Cloudflare Tunnel** : Connecte l’API locale au web via un tunnel sécurisé, sans ouvrir de ports sur votre réseau. Les requêtes passent par le réseau Cloudflare, avec chiffrement de bout en bout et protection DDoS.
+- **Frontend hébergé** : Web app PHP sur AlwaysData, optimisée pour l’accessibilité et la scalabilité, avec un pattern MVC et Twig pour une UI fluide.
+- **Backend local** : API Flask sur un serveur local (Raspberry Pi, PC), gérant la caméra et les données avec une empreinte légère.
+- **Base de données** : MySQL sur AlwaysData, stockant utilisateurs, configs et journaux, avec accès sécurisé depuis le frontend et le backend.
+- **Caméra connectée** : Intégration flexible via HTTP, RTSP ou MQTT, adaptable à divers modèles de caméras.
+
+Cette infra garantit une **sécurité maximale** (zéro exposition directe du serveur local) et une **expérience utilisateur fluide**, même sur des réseaux domestiques.
 
 ---
 
