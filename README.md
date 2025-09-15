@@ -13,6 +13,7 @@ Cette architecture garantit **sécurité**, **flexibilité** et **performance**,
 ---
 
 ## 🌟 Fonctionnalités
+- 🧑‍💻**Connexion Inscription**
 - 🎥 **Streaming vidéo en direct**  
 - 🕹️ **Contrôle à distance** (démarrer / arrêter)  
 - 🖥️ **Interface web intuitive et accessible**  
