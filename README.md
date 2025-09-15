@@ -1,50 +1,86 @@
 # 📸 Caméra Connectée
+*Gérez votre caméra à distance via une web app sécurisée et intuitive !*
 
-**Gérez votre caméra à distance via une web app sécurisée et intuitive !**
+---
 
 ## 🚀 À propos
+**Caméra Connectée** est une solution complète pour contrôler une caméra en temps réel via :
+- une **Web App PHP** hébergée en ligne,
+- une **API Flask** locale, reliée au cloud par **Cloudflare Tunnel**.  
 
-**Caméra Connectée** est une solution pour contrôler une caméra via une web app PHP et une API Flask, avec une infrastructure moderne et sécurisée grâce à Cloudflare Tunnel.
+Cette architecture garantit **sécurité**, **flexibilité** et **performance**, sans ports ouverts sur votre réseau domestique.
 
 ---
 
 ## 🌟 Fonctionnalités
-
-- 🎥 Streaming vidéo en direct.
-- 🕹️ Contrôle à distance (démarrer/arrêter).
-- 🖥️ Interface web intuitive.
-- 🔒 Communications chiffrées, zéro port ouvert.
+- 🎥 **Streaming vidéo en direct**  
+- 🕹️ **Contrôle à distance** (démarrer / arrêter)  
+- 🖥️ **Interface web intuitive et accessible**  
+- 🔊 **Chat vocal bidirectionnel** via RTCP (parler/écouter en temps réel)  
+- 🔒 **Communications chiffrées**, zéro exposition directe du serveur local  
 
 ---
 
-## 🏗️ Infrastructure 🔥
+## 🏗️ Infrastructure
+L’infrastructure repose sur une séparation claire entre les composants :  
 
-L'infrastructure est le cœur de ce projet, conçue pour allier **sécurité**, **flexibilité** et **performance** :
-
-- **Architecture distribuée** : Séparation nette entre le **frontend** (PHP sur AlwaysData) et le **backend** (API Flask hébergée localement, ex. Raspberry Pi), garantissant modularité et résilience.
-- **Cloudflare Tunnel** : Connecte l’API locale au web via un tunnel sécurisé, sans ouvrir de ports sur votre réseau. Les requêtes passent par le réseau Cloudflare, avec chiffrement de bout en bout et protection DDoS.
-- **Frontend hébergé** : Web app PHP sur AlwaysData, optimisée pour l’accessibilité et la scalabilité, avec un pattern MVC et Twig pour une UI fluide.
-- **Backend local** : API Flask sur un serveur local (Raspberry Pi, PC), gérant la caméra et les données avec une empreinte légère.
-- **Base de données** : MySQL sur AlwaysData, stockant utilisateurs, configs et journaux, avec accès sécurisé depuis le frontend et le backend.
-- **Caméra connectée** : Intégration flexible via HTTP, RTSP ou MQTT, adaptable à divers modèles de caméras.
-
-Cette infra garantit une **sécurité maximale** (zéro exposition directe du serveur local) et une **expérience utilisateur fluide**, même sur des réseaux domestiques.
+- **Architecture distribuée**  
+  Frontend en PHP (AlwaysData) et backend en Python (API Flask locale).  
+- **Cloudflare Tunnel**  
+  Connecte l’API locale au web via un tunnel sécurisé, sans ouverture de ports.  
+- **Frontend hébergé**  
+  Web app PHP (MVC + Twig), accessible, scalable et performante.  
+- **Backend local**  
+  API Flask sur Raspberry Pi ou PC, gérant la caméra, l’audio et les données.  
+- **Chat vocal en temps réel**  
+  Communication audio bidirectionnelle entre le navigateur et la caméra/serveur.  
+  Utilisation de **RTP/RTCP** pour la transmission et le contrôle des flux audio, garantissant faible latence et synchronisation avec la vidéo.  
+- **Base de données**  
+  MySQL (AlwaysData) pour utilisateurs, configurations et journaux.  
+- **Caméra connectée**  
+  Compatible HTTP ou RTSP → adaptable à différents modèles.  
 
 ---
 
 ## 🛠️ Technologies
 
-| **Composant** | **Technologies**                     |
-|---------------|--------------------------------------|
-| Frontend      | PHP, MVC, Twig, Composer, AlwaysData |
-| Backend       | Python, Flask, pip, Cloudflare Tunnel|
-| Base de données | MySQL                              |
-| Caméra        | RTSP/HTTP/MQTT                     |
+| Composant      | Technologies                           |
+|----------------|----------------------------------------|
+| Frontend       | PHP 8+, MVC, Twig, Composer, AlwaysData |
+| Backend        | Python 3, Flask, pip, Cloudflare Tunnel |
+| Audio/Vidéo    | RTP / RTCP (flux bidirectionnels)       |
+| Base de données| MySQL                                   |
+| Caméra         | HTTP, RTSP                              |
 
 ---
 
 ## 📖 Installation
 
+### 🔑 Prérequis
+- Un **compte Cloudflare** + domaine configuré  
+- Un **hébergement PHP** (ex : AlwaysData)  
+- Un **serveur local** (Raspberry Pi ou PC)  
+- **Python 3.x, pip, PHP 8.x+, Composer**  
+
+---
+
+### 1️⃣ API Backend (Flask)
+
+```bash
+# Clonez le dépôt
+git clone [URL_API] && cd [DOSSIER_API]
+
+# Installez les dépendances
+pip install -r requirements.txt
+
+# Configurez Cloudflare Tunnel
+cloudflared tunnel run [TUNNEL_UUID]
+
+# Exemple : api.mondomaine.com → http://localhost:5000
+
+# Lancez Flask
+export FLASK_APP=app.py
+flask run --host=0.0.0.0 --port=5000
 ### Prérequis
 - Compte Cloudflare + domaine.
 - Serveur PHP (AlwaysData).
